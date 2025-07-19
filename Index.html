@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presentación Flexbox</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3e5f5;
+      color: #333;
+    }
+    .slide {
+      display: none;
+      padding: 40px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+    .slide.active {
+      display: block;
+    }
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .example {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .example div {
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+  </style>
+</head>
+<body style="font-size: 1.3em; line-height: 1.6;">
+
+
+<div class="slide active">
+  <h1>¿Qué es Flexbox en CSS?</h1>
+  <p><strong>Flexbox</strong> (Flexible Box Layout) es un modelo de diseño que permite alinear, distribuir y organizar elementos dentro de un contenedor de forma eficiente, ya sea en fila o columna.</p>
+  <ul>
+    <li><code>display: flex</code> → Activa Flexbox en el contenedor.</li>
+    <li><code>flex-direction</code> → Define la dirección (row o column).</li>
+    <li><code>justify-content</code> → Alinea horizontalmente (eje principal).</li>
+    <li><code>align-items</code> → Alinea verticalmente (eje cruzado).</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>¿Qué es <code>flex: 1</code> en CSS?</h1>
+  <p><strong><code>flex: 1</code></strong> es un atajo de:</p>
+  <pre style="background: #ede7f6; padding: 10px; border-left: 5px solid #7e57c2;">
+flex: 1 1 0%;
+  </pre>
+</div>
+
+<div class="slide">
+  <h2>¿Qué significa cada parte?</h2>
+  <ul>
+    <li><strong>flex-grow: 1</strong> → Puede crecer.</li>
+    <li><strong>flex-shrink: 1</strong> → Puede encogerse.</li>
+    <li><strong>flex-basis: 0%</strong> → Parte desde 0 de ancho base.</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <h2>Ejemplo: <code>flex-direction</code></h2>
+  <p>Define la dirección principal del eje:</p>
+  <ul>
+    <li><code>row</code> (por defecto) → de izquierda a derecha</li>
+    <li><code>column</code> → de arriba hacia abajo</li>
+  </ul>
+  <p><strong>row:</strong></p>
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="background: #ce93d8; padding: 10px;">1</div>
+    <div style="background: #ba68c8; padding: 10px;">2</div>
+    <div style="background: #9c27b0; padding: 10px;">3</div>
+  </div>
+  <p><strong>column:</strong></p>
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="background: #ce93d8; padding: 10px;">1</div>
+    <div style="background: #ba68c8; padding: 10px;">2</div>
+    <div style="background: #9c27b0; padding: 10px;">3</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: <code>justify-content</code></h2>
+  <p>Controla la alineación horizontal (eje principal):</p>
+  <div style="display: flex; justify-content: space-between; background: #f3e5f5; padding: 10px;">
+    <div style="background: #ce93d8; padding: 10px;">Izq</div>
+    <div style="background: #ba68c8; padding: 10px;">Centro</div>
+    <div style="background: #9c27b0; padding: 10px;">Der</div>
+  </div>
+  <p><code>justify-content: space-between;</code></p>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: <code>align-items</code></h2>
+  <p>Alinea elementos en el eje vertical (cuando están en fila):</p>
+  <div style="display: flex; align-items: flex-start; height: 100px; background: #f3e5f5; padding: 10px;">
+    <div style="background: #ce93d8; padding: 10px;">Alto</div>
+    <div style="background: #ba68c8; padding: 30px 10px;">Medio</div>
+    <div style="background: #9c27b0; padding: 50px 10px;">Bajo</div>
+  </div>
+  <p><code>align-items: flex-start;</code> alinea todos arriba</p>
+</div>
+
+
+<div class="slide">
+  <h2>Ejemplo visual:</h2>
+  <p>Comparamos tres cajas con distintos valores de <code>flex</code>:</p>
+  <div class="example">
+    <div style="flex: 1; background: #ab47bc;">flex: 1</div>
+    <div style="flex: 2; background: #ba68c8;">flex: 2</div>
+    <div style="flex: 3; background: #8e24aa;">flex: 3</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Distribución del espacio</h2>
+  <p>La suma de las proporciones es <strong>1 + 2 + 3 = 6 partes</strong></p>
+  <ul>
+    <li>Caja 1 = 1/6 del espacio</li>
+    <li>Caja 2 = 2/6 = 1/3</li>
+    <li>Caja 3 = 3/6 = 1/2</li>
+  </ul>
+  </div>
+
+<div class="slide">
+  <h2>¿Por qué se reparte en 6 partes?</h2>
+  <p>Cuando usas <code>flex: 1</code>, <code>flex: 2</code>, y <code>flex: 3</code>, estás indicando proporciones:</p>
+  <p><strong>1 + 2 + 3 = 6 partes</strong> del espacio total.</p>
+  <div style="display: flex; width: 100%; height: 50px; margin: 20px 0; font-size: 0.9em;">
+    <div style="flex: 1; background: #ab47bc; color: white; display: flex; align-items: center; justify-content: center;">1/6</div>
+    <div style="flex: 2; background: #ba68c8; color: white; display: flex; align-items: center; justify-content: center;">2/6</div>
+    <div style="flex: 3; background: #8e24aa; color: white; display: flex; align-items: center; justify-content: center;">3/6</div>
+  </div>
+  <p>Cada caja toma la parte proporcional del total de espacio disponible.</p>
+</div>
+</div>
+
+
+
+<div class="slide">
+  <h2>Tipos de <code>flex-direction</code></h2>
+  <ul>
+    <li><code>row</code> – Dirección horizontal (por defecto).</li>
+    <li><code>row-reverse</code> – Horizontal invertida.</li>
+    <li><code>column</code> – Dirección vertical.</li>
+    <li><code>column-reverse</code> – Vertical invertida.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Tipos de <code>justify-content</code></h2>
+  <ul>
+    <li><code>flex-start</code> – Al inicio del eje.</li>
+    <li><code>flex-end</code> – Al final del eje.</li>
+    <li><code>center</code> – Centrado.</li>
+    <li><code>space-between</code> – Espacio entre elementos.</li>
+    <li><code>space-around</code> – Espacio alrededor de cada elemento.</li>
+    <li><code>space-evenly</code> – Espacio igual entre todos.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Tipos de <code>align-items</code> y <code>align-content</code></h2>
+  <p><strong>align-items:</strong></p>
+  <ul>
+    <li><code>stretch</code> – Estira los elementos (por defecto).</li>
+    <li><code>flex-start</code> – Alinea arriba.</li>
+    <li><code>flex-end</code> – Alinea abajo.</li>
+    <li><code>center</code> – Centra verticalmente.</li>
+    <li><code>baseline</code> – Alinea a la línea base del texto.</li>
+  </ul>
+  <p><strong>align-content:</strong> (solo si hay múltiples líneas)</p>
+  <ul>
+    <li><code>stretch</code>, <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Tipos de <code>flex-wrap</code></h2>
+  <ul>
+    <li><code>nowrap</code> – Todo en una línea (por defecto).</li>
+    <li><code>wrap</code> – Permite que los elementos bajen de línea.</li>
+    <li><code>wrap-reverse</code> – Permite bajar pero en orden inverso.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: <code>flex-basis</code>
+
+  <h2>Explicación visual de <code>flex-basis</code></h2>
+  <img src="Flex-basis.png" alt="Explicación de flex-basis" style="max-width: 20%; height: auto; border: 1px solid #ccc; border-radius: 10px;">
+
+</h2>
+  <p>Define el tamaño base inicial del elemento antes de crecer o encogerse.</p>
+  <div style="display: flex; gap: 10px;">
+    <div style="flex-basis: 100px; background: #ce93d8; padding: 10px;">100px</div>
+    <div style="flex-basis: 200px; background: #ba68c8; padding: 10px;">200px</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Ejemplo: <code>align-self</code></h2>
+  <p>Permite alinear un solo elemento de forma diferente al resto.</p>
+  <div style="display: flex; align-items: flex-start; gap: 10px; height: 150px; background: #f3e5f5; padding: 10px;">
+    <div style="background: #ce93d8; padding: 10px;">Normal</div>
+    <div style="background: #ba68c8; padding: 10px; align-self: flex-end;">align-self: flex-end</div>
+    <div style="background: #9c27b0; padding: 10px;">Normal</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Resumen de propiedades Flexbox</h2>
+  <h3>Contenedor (padre)</h3>
+  <ul>
+    <li><code>display: flex</code> – Activa el modelo Flexbox.</li>
+    <li><code>flex-direction</code> – Dirección del eje principal (row, column).</li>
+    <li><code>justify-content</code> – Alineación horizontal (eje principal).</li>
+    <li><code>align-items</code> – Alineación vertical (eje cruzado).</li>
+    <li><code>align-content</code> – Alineación de múltiples líneas.</li>
+    <li><code>flex-wrap</code> – Permite saltar a nuevas líneas.</li>
+  </ul>
+  <h3>Elementos hijos (items)</h3>
+  <ul>
+    <li><code>flex-grow</code> – Permite que el elemento crezca.</li>
+    <li><code>flex-shrink</code> – Permite que el elemento se encoja.</li>
+    <li><code>flex-basis</code> – Tamaño base inicial del elemento.</li>
+    <li><code>flex</code> – Atajo de grow, shrink y basis.</li>
+    <li><code>align-self</code> – Alineación individual (sobrescribe <code>align-items</code>).</li>
+    <li><code>order</code> – Cambia el orden visual del elemento.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>¡Listo!</h2>
+  <p>Ahora sabes cómo usar <code>flex: 1</code> y cómo afecta el espacio en Flexbox.</p>
+  <p style="font-size: 0.9em; color: #666;">Presentación con ayuda de Gabo 🧠 para Delia 💻</p>
+</div>
+
+<div class="controls">
+  <button onclick="prevSlide()">Anterior</button>
+  <button onclick="nextSlide()">Siguiente</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextSlide() {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+  }
+</script>
+
+</body>
+</html>
